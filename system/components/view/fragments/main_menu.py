@@ -23,6 +23,14 @@ menu_items = dbc.Row(
             ),
             id="authors-col", 
             width="auto"
+        ),
+        dbc.Col(
+            dbc.NavLink(dbc.Button("Search", id="search-button", n_clicks=0),
+            href="/search",
+            id="search-link"
+            ),
+            id="search-col", 
+            width="auto"
         )
     ],
     no_gutters=True,

@@ -216,23 +216,45 @@ def populate_author(author):
         for coauthor in coauthors:
             # Check values available
             try:
-                name = coauthor.name  
+                coauthor_name = coauthor.name  
             except Exception as e:
                 print(e)
-                name = "Name not available"
+                coauthor_name = "Name not available"
             try:
-                affiliation = coauthor.affiliation
+                coauthor_affiliation = coauthor.affiliation
             except Exception as e:
                 print(e)
-                affiliation = "Affiliation not available"
+                coauthor_affiliation = "Affiliation not available"
             # Add coauthor
             if conn:
                 try:    
                     cursor = conn.cursor()
                     cursor.execute(f"""
                     INSERT INTO authors (name, affiliation)
-                    VALUES ("{name}", "{affiliation}")
+                    VALUES ("{coauthor_name}", "{coauthor_affiliation}")
                     """)
                     conn.commit()
                 except Exception as e:
                     print(e)
+                # Get ID of coauthor
+                try:    
+                    cursor = conn.cursor()
+                    cursor.execute(f"""
+                    SELECT id FROM authors
+                    WHERE name = "{coauthor_name}"
+                    """)
+                    results = cursor.fetchone()
+                    coauthor_id = results[0]
+                except Exception as e:
+                    print(e)
+                # Add link author-coauthor
+                try:    
+                    cursor = conn.cursor()
+                    cursor.execute(f"""
+                    INSERT INTO author_coauthor (author_id, coauthor_id)
+                    VALUES ("{author_id}", "{coauthor_id}")
+                    """)
+                    conn.commit()
+                except Exception as e:
+                    print(e)  
+                
