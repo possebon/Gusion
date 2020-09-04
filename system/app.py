@@ -9,6 +9,7 @@ from dash.dependencies import Input, Output, State
 # Components
 #   Controller
 from system.components.controller.search import get_author
+from system.components.controller.author import get_plot_author
 #   Fragments
 from system.components.view.fragments.main_layout import main_layout
 #   Pages
@@ -49,8 +50,30 @@ def render_page_content(pathname):
     [State("search-author", "value")]
 )
 def search_author(click, name):
-    print("get author")
     get_author(name)
     return None
-
+#   Select author 1
+@app.callback(
+    Output("author-1-content-div", "children"),
+    [Input("author-1-button", "n_clicks")],
+    [State("author-1-dropdown", "value")]
+)
+def plot_author_1(click, name):
+    if click:
+        plot = get_plot_author(name)
+        return plot 
+    else:
+        return None
+#   Select author 2
+@app.callback(
+    Output("author-2-content-div", "children"),
+    [Input("author-2-button", "n_clicks")],
+    [State("author-2-dropdown", "value")]
+)
+def plot_author_2(click, name):
+    if click:
+        plot = get_plot_author(name)
+        return plot 
+    else:
+        return None
 

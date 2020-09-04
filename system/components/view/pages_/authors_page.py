@@ -18,6 +18,7 @@ authors_page = html.Div([
                                 id='author-1-dropdown',
                                 options=author_options()
                             ),
+                            html.Div(id="author-1-content-div"),
                             dbc.Button("Select", id="author-1-button", color="dark")
                         ], id="author-1-div"),
                         html.Div([
@@ -26,6 +27,7 @@ authors_page = html.Div([
                                 id='author-2-dropdown',
                                 options=author_options()
                             ),
+                            html.Div(id="author-2-content-div"),
                             dbc.Button("Select", id="author-2-button", color="dark")
                         ], id="author-2-div"),
                     ], className="row")

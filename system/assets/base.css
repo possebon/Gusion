@@ -5,6 +5,26 @@ html,body {
 #menu {
     z-index: 0;
 }
+#iframe-topic {
+    width: 165%;
+    height: 120vh;
+    margin: 0;
+    padding:0;
+    -webkit-transform:scale(0.6);
+    transform-origin: left top;
+    overflow: hidden;
+    border:0;
+}
+#iframe-topic::-webkit-scrollbar {
+    display:none
+}
+#topic-div {
+    height: 100vh;
+   
+    overflow: hidden;
+   
+    width: 100%;
+}
 
 /* Padding for logo */
 #logo {
@@ -148,4 +168,18 @@ tbody {
 #author-1-div, #author-2-div {
     width: 49%;
     padding-right: 1em;
+}
+
+#author-picture, #author-data {
+    width: 50%;
+}
+
+#author-picture {
+    text-align: center;
+    display: block;
+}
+
+#author-1-button, #author-2-button {
+    position: absolute;
+    bottom: 0;
 }
