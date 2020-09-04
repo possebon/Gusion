@@ -15,12 +15,19 @@ menu_items = dbc.Row(
             ),
             id="home-col", 
             width="auto"
+        ),
+        dbc.Col(
+            dbc.NavLink(dbc.Button("Authors", id="authors-button", n_clicks=0),
+            href="/authors",
+            id="authors-link"
+            ),
+            id="authors-col", 
+            width="auto"
         )
     ],
     no_gutters=True,
     className="ml-auto flex-nowrap mt-3",
     align="center",
-
 )
 # Main menu
 main_menu = dbc.Navbar(

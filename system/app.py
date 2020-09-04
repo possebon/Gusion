@@ -25,6 +25,8 @@ app.layout = html.Div([dcc.Location(id="url"), layout], id="layout-div")
 def render_page_content(pathname):
     if pathname in ["/", "/home"]:
         return pages["home"]
+    elif pathname in ["/authors"]:
+        return pages["authors"]
     # If the user tries to reach a different page, return a 404 message
     return dbc.Jumbotron(
         [

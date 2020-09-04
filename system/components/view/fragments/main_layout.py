@@ -6,7 +6,6 @@ import dash_html_components as html
 # Components
 #   Fragments
 from system.components.view.fragments.main_menu import main_menu
-
 # Main Layout
 main_layout = html.Div([
     html.Div([
