@@ -265,4 +265,24 @@ def populate_author(author):
                     conn.commit()
                 except Exception as e:
                     print(e)  
-                
+# Get authors
+def get_authors_db():
+    try:
+        conn = sqlite3.connect("./system/db/database.db")
+    except Exception as e:
+        print(e)
+    authors = []
+    try:
+        cursor = conn.cursor()
+        cursor.execute("""
+        SELECT name, citedby from authors 
+        WHERE citedby > -1               
+        """)
+        results = cursor.fetchall()
+        # Turn results into list
+        for result in results:
+            authors.append(result[0])
+    except Exception as e:
+        print(e)
+    return authors
+        

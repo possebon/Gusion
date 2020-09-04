@@ -6,7 +6,7 @@ from scholarly import scholarly
 #   Controller
 from system.components.controller.proxy import make_collector, setup_new_proxies
 #   Model
-from system.components.model.database import populate_author, create_db
+from system.components.model.database import populate_author, create_db, get_authors_db
 # Path
 from system.tor_path import tor_path
 # Select author
@@ -55,5 +55,10 @@ def get_author(name):
         populate_author(author)
         print("populated database")
     
-
-
+def author_options():
+    authors = get_authors_db()
+    author_options = []
+    for author in authors:
+        option = {"label" : author, "value" : author}
+        author_options.append(option)
+    return author_options

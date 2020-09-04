@@ -146,5 +146,6 @@ tbody {
 }
 
 #author-1-div, #author-2-div {
-    width: 50%;
+    width: 49%;
+    padding-right: 1em;
 }
