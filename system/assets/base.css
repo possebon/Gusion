@@ -140,3 +140,11 @@ tbody {
 #delete-article-button {
     height: 6vh;
 }
+
+#authors-page-div {
+    padding-left: 1.2em;
+}
+
+#author-1-div, #author-2-div {
+    width: 50%;
+}

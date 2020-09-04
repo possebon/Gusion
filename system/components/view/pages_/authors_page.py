@@ -9,5 +9,12 @@ import dash_html_components as html
 #
 # Authors Page
 authors_page = html.Div([
-                    html.P("Authors Page")
-])
+                    html.Div([
+                        html.Div([
+                            html.P("Author 1")
+                        ], id="author-1-div"),
+                        html.Div([
+                            html.P("Author 2")
+                        ], id="author-2-div"),
+                    ], className="row")
+], id="authors-page-div")
