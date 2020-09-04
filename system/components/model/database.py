@@ -23,7 +23,7 @@ def create_db():
             cites_per_year TEXT,
             email TEXT,
             url_picture TEXT,
-            interests TEXT,
+            interests TEXT
         )          
         """)
         
@@ -44,7 +44,7 @@ def create_db():
         """)
         
         cursor.execute("""
-        CREATE TABLE paper (
+        CREATE TABLE papers (
             id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
             title TEXT NOT NULL,
             abstract TEXT NOT NULL,
@@ -132,35 +132,41 @@ def populate_author(author):
             print(e)
     # Add papers
     for publication in author.publications:
-        paper = publication.fill()
+        try:
+            paper = publication.fill()
+        except Exception as e:
+            print(e)
+            paper = publication
         # Check values available
         try:
             title = paper.bib["title"]  
         except Exception as e:
             print(e)
-            name = "Title not available"
+            title = "Title not available"
+        title = title.replace('"', "'")
         try:
-            abstract = paper.bib.["abstract"]
+            abstract = paper.bib["abstract"]
         except Exception as e:
             print(e)
             abstract = "Abstract not available"
+        abstract = abstract.replace('"', "'")
         try:
-            paper_author = paper.bib.["author"]
+            paper_author = paper.bib["author"]
         except Exception as e:
             print(e)
             paper_author = "Author not available"
         try:
-            year = paper.bib.["year"]
+            year = paper.bib["year"]
         except Exception as e:
             print(e)
             year = "Year not available"
         try:
-            cites = paper.bib.["cites"]
+            cites = paper.bib["cites"]
         except Exception as e:
             print(e)
             cites = "Cites not available"
         try:
-            journal = paper.bib.["journal"]
+            journal = paper.bib["journal"]
         except Exception as e:
             print(e)
             journal = "Journal not available"
@@ -170,7 +176,7 @@ def populate_author(author):
             print(e)
             publisher = "Publisher not available"
         try:
-            url = paper.bib.["url"]
+            url = paper.bib["url"]
         except Exception as e:
             print(e)
             url = "URL not available"
@@ -179,13 +185,13 @@ def populate_author(author):
         except Exception as e:
             print(e)
             paper_cites_per_year = "Cites per year not available"
-        # Add author
+        # Add paper
         if conn:
             try:    
                 cursor = conn.cursor()
                 cursor.execute(f"""
-                INSERT INTO papers (titles, abstract, author, year, cites, journal, publisher, url, cites_per_year)
-                VALUES ("{title}", "{abstract}", "{paper_author}", "{year}", "{cites}", "{publisher}", "{url}", "{paper_cites_per_year}")
+                INSERT INTO papers (title, abstract, author, year, cites, journal, publisher, url, cites_per_year)
+                VALUES ("{title}", "{abstract}", "{paper_author}", "{year}", "{cites}", "{journal}", "{publisher}", "{url}", "{paper_cites_per_year}")
                 """)
                 conn.commit()
             except Exception as e:
@@ -199,10 +205,11 @@ def populate_author(author):
                 """)
                 results = cursor.fetchone()
                 paper_id = results[0]
+                print(paper_id)
             except Exception as e:
                 print(e)
             # Add link author-paper
-            try:    
+            try: 
                 cursor = conn.cursor()
                 cursor.execute(f"""
                 INSERT INTO author_paper (author_id, paper_id)
@@ -213,6 +220,7 @@ def populate_author(author):
                 print(e)   
     # Add coauthors
     if coauthors != "Coauthors not available":
+        print(coauthors)
         for coauthor in coauthors:
             # Check values available
             try:

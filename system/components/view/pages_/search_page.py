@@ -11,6 +11,7 @@ from system.components.view.fragments.search_form import search_form
 from system.components.view.fragments.search_menu import search_menu
 # Search Page
 search_page = html.Div([
+                html.Div(id="callback-search-div"),
                 search_form,
                 search_menu
 ])
