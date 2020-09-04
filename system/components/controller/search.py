@@ -5,13 +5,15 @@ from scholarly import scholarly
 # Components
 #   Controller
 from system.components.controller.proxy import make_collector, setup_new_proxies
+#   Model
+from system.components.model.database import populate_author
 # Path
 from system.tor_path import tor_path
 # Select author
 def select_author(name):
     pass
-# Populate author
-def populate_author(name):
+# Get author
+def get_author(name):
     # Setup working proxy
     def setup_proxy():
         http_collector = make_collector()
@@ -31,6 +33,7 @@ def populate_author(name):
                 scholarly.launch_tor(tor_path)
             except Exception as e:
                 print(e)
+    setup_tor()
     # Search author by name
     def search_author(name):
         while True:
@@ -39,8 +42,10 @@ def populate_author(name):
             if author:
                 break
         return author
-
+    # Get and populate author
     author = search_author(name) 
+    populate_author(author)
+    return
            
             
             

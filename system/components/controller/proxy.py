@@ -8,7 +8,7 @@ from proxyscrape import create_collector, get_collector, add_resource_type, get_
 # Random string
 def get_random_string(length):
     letters = string.ascii_lowercase
-    result_str = ''.join(random.choice(letters) for i in range(length))
+    result_str = ''.join(random.choice(letters) for _ in range(length))
     return result_str
 # Make Collector
 def make_collector():
