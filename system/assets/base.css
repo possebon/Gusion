@@ -6,14 +6,16 @@ html,body {
     z-index: 0;
 }
 #iframe-topic {
-    width: 165%;
-    height: 120vh;
+    width: 170vh;
+    height: 130vh;
     margin: 0;
     padding:0;
-    -webkit-transform:scale(0.6);
+    padding-top: 1em;
+    -webkit-transform:scale(0.62);
     transform-origin: left top;
     overflow: hidden;
     border:0;
+    font-size: 25px;
 }
 #iframe-topic::-webkit-scrollbar {
     display:none
@@ -182,4 +184,16 @@ tbody {
 #author-1-button, #author-2-button {
     position: absolute;
     bottom: 0;
+}
+
+#author-1-content-div {
+    height: 100vh;
+}
+
+#common-div {
+    height: 80vh;
+}
+
+.dash-graph {
+    height: 80vh;
 }

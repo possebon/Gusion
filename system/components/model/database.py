@@ -17,7 +17,7 @@ def create_db():
         cursor.execute("""
         CREATE TABLE authors (
             id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-            name TEXT NOT NULL,
+            name TEXT UNIQUE NOT NULL,
             affiliation TEXT NOT NULL,
             citedby INTEGER,
             cites_per_year TEXT,
@@ -46,7 +46,7 @@ def create_db():
         cursor.execute("""
         CREATE TABLE papers (
             id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-            title TEXT NOT NULL,
+            title TEXT UNIQUE NOT NULL,
             abstract TEXT NOT NULL,
             author TEXT NOT NULL,
             year INTEGER NOT NULL,
@@ -110,6 +110,7 @@ def populate_author(author):
         print(e)
     # Add author
     if conn:
+        repeated = False
         try:    
             cursor = conn.cursor()
             cursor.execute(f"""
@@ -119,6 +120,7 @@ def populate_author(author):
             conn.commit()
         except Exception as e:
             print(e)
+            repeated = True
         # Get ID of author
         try:    
             cursor = conn.cursor()
@@ -128,6 +130,13 @@ def populate_author(author):
             """)
             results = cursor.fetchone()
             author_id = results[0]
+            if repeated: 
+                cursor.execute(f"""
+                UPDATE authors 
+                SET name = "{name}", affiliation = "{affiliation}", citedby = "{citedby}", cites_per_year = "{cites_per_year}",
+                email = "{email}", url_picture = "{url_picture}", interests = "{interests}"
+                WHERE id = {author_id}
+                """)
         except Exception as e:
             print(e)
     # Add papers
@@ -220,7 +229,6 @@ def populate_author(author):
                 print(e)   
     # Add coauthors
     if coauthors != "Coauthors not available":
-        print(coauthors)
         for coauthor in coauthors:
             # Check values available
             try:

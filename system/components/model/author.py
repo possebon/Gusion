@@ -18,7 +18,6 @@ def get_author_data_db(name):
         WHERE name = "{name}"               
         """)
         result = cursor.fetchone()
-        print(result)
     except Exception as e:
         print(e)
     return result
