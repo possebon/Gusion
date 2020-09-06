@@ -197,3 +197,8 @@ tbody {
 .dash-graph {
     height: 80vh;
 }
+
+
+.dash-spreadsheet-container .dash-spreadsheet-inner *, .dash-spreadsheet-container .dash-spreadsheet-inner *:after, .dash-spreadsheet-container .dash-spreadsheet-inner *:before {
+    box-sizing: inherit; width: 100%;
+}

@@ -7,7 +7,7 @@ import sqlite3
 # Create Database
 def create_db():
     try: 
-        conn = sqlite3.connect("database.db")
+        conn = sqlite3.connect("./system/db/database.db")
     except Exception as e:
         print(e)
     
@@ -105,7 +105,7 @@ def populate_author(author):
     # Connect to database
     conn = None
     try: 
-        conn = sqlite3.connect("database.db")
+        conn = sqlite3.connect("./system/db/database.db")
     except Exception as e:
         print(e)
     # Add author
