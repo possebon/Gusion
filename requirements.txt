@@ -8,3 +8,5 @@ scholarly
 pandas
 plotly
 nltk
+sklearn
+pyLDAvis
