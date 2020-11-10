@@ -19,4 +19,6 @@ WORKDIR /app
 RUN pip install --upgrade pip \
     && pip install -r requirements.txt
 
+RUN [ "python", "-c", "import nltk; nltk.download('stopwords'); nltk.download('averaged_perceptron_tagger')" ]
+
 # ENTRYPOINT ["tail", "-f", "/dev/null"]
