@@ -10,6 +10,7 @@ from dash.dependencies import Input, Output, State
 #   Controller
 from system.components.controller.search import get_author
 from system.components.controller.author import get_plot_author
+from system.components.controller.group import get_plot_group
 #   Fragments
 from system.components.view.fragments.main_layout import main_layout
 #   Pages
@@ -33,6 +34,8 @@ def render_page_content(pathname):
         return pages["home"]
     elif pathname in ["/authors"]:
         return pages["authors"]
+    elif pathname in ["/groups"]:
+        return pages["groups"]
     elif pathname in ["/graph"]:
         return pages["graph"]
     elif pathname in ["/search"]:
@@ -75,6 +78,30 @@ def plot_author_1(click, name):
 def plot_author_2(click, name):
     if click:
         plot = get_plot_author(name)
+        return plot 
+    else:
+        return None
+#   Select group 1
+@app.callback(
+    Output("group-1-content-div", "children"),
+    [Input("group-1-button", "n_clicks")],
+    [State("group-1-dropdown", "value")]
+)
+def plot_group_1(click, names):
+    if click:
+        plot = get_plot_group(names)
+        return plot 
+    else:
+        return None
+#   Select group 2
+@app.callback(
+    Output("group-2-content-div", "children"),
+    [Input("group-2-button", "n_clicks")],
+    [State("group-2-dropdown", "value")]
+)
+def plot_group_2(click, names):
+    if click:
+        plot = get_plot_group(names)
         return plot 
     else:
         return None

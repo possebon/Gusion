@@ -163,11 +163,11 @@ tbody {
     height: 6vh;
 }
 
-#authors-page-div {
+#authors-page-div, #groups-page-div {
     padding-left: 1.2em;
 }
 
-#author-1-div, #author-2-div {
+#author-1-div, #author-2-div, #group-1-div, #group-2-div {
     width: 49%;
     padding-right: 1em;
 }
@@ -181,7 +181,7 @@ tbody {
     display: block;
 }
 
-#author-1-button, #author-2-button {
+#author-1-button, #author-2-button, #group-1-button, #group-2-button {
     position: absolute;
     bottom: 0;
 }

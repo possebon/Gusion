@@ -25,6 +25,14 @@ menu_items = dbc.Row(
             width="auto"
         ),
         dbc.Col(
+            dbc.NavLink(dbc.Button("Groups", id="groups-button", n_clicks=0),
+            href="/groups",
+            id="groups-link"
+            ),
+            id="groups-col", 
+            width="auto"
+        ),
+        dbc.Col(
             dbc.NavLink(dbc.Button("Graph", id="graph-button", n_clicks=0),
             href="/graph",
             id="graph-link"
