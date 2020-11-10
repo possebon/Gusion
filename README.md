@@ -1,3 +1,5 @@
+![](https://github.com/felipeboffnunes/Gusion/blob/master/images/gusion.png?raw=true)
+
 # Gusion
 
 Gusion is a tool for analysis of scientific research authors.
