@@ -10,3 +10,5 @@ plotly
 nltk
 sklearn
 pyLDAvis
+python-igraph
+chart_studio
