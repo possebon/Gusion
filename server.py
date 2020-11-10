@@ -1,3 +1,2 @@
-from system.app import app
+from system.app import server
 
-server = app.server
