@@ -7,3 +7,4 @@ dash-bootstrap-components
 scholarly
 pandas
 plotly
+nltk
