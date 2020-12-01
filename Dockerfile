@@ -21,4 +21,4 @@ RUN pip install --upgrade pip \
 
 RUN [ "python", "-c", "import nltk; nltk.download('stopwords'); nltk.download('averaged_perceptron_tagger')" ]
 
-# ENTRYPOINT ["tail", "-f", "/dev/null"]
+ENTRYPOINT ["tail", "-f", "/dev/null"]
